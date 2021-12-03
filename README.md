@@ -9,7 +9,7 @@ by offering a unified API and data structures for all datasets.
 ## Installation
 
 ```bash
-SRC_DIR=${HOME}/src
+SRC_DIR=${PWD}/src
 mkdir -p ${SRC_DIR} && cd ${SRC_DIR}
 # For Cubert.
 git clone https://github.com/google-research/google-research --depth=1
@@ -17,6 +17,18 @@ export PYTHONPATH=${PYTHONPATH}:${SRC_DIR}/google-research
 git clone https://github.com/google-research/plur && cd plur
 python -m pip install -r requirements.txt
 python setup.py install
+```
+
+**Test execution on small dataset**
+
+```bash
+cd plur
+python3 plur_data_generation.py --dataset_name=manysstubs4j_dataset \
+  --stage_1_dir=/tmp/manysstubs4j_dataset/stage_1 \
+  --stage_2_dir=/tmp/manysstubs4j_dataset/stage_2 \
+  --train_data_percentage=40 \
+  --validation_data_percentage=30 \
+  --test_data_percentage=30
 ```
 
 ## Usage

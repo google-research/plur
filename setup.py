@@ -84,7 +84,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
 
     ],
-    keywords='plur, program, machine, learning, research, software, synthesis',
+    keywords='plur, program-synthesis, machine-learning, research, software-engineering',
     include_package_data=True,
     packages=find_packages(exclude=['docs']),
     install_requires=install_requires,
