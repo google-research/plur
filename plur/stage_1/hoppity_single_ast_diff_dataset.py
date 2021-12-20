@@ -58,10 +58,10 @@ class HoppitySingleAstDiffDataset(PlurDataset):
           'sha1sum':
               '25e4f10db00dcf3a8cd63fcd41130baf66fb5c7d',
       },
-      # Please download 'hoppity_cg.tar.gz' manually and store it in
-      # `self.raw_data_dir`. We were unable to find a public link
-      # for the dataset. Try contacting the authors of the Hoppity paper
-      # directly.
+      'hoppity_cg.tar.gz': {
+          'url': 'https://drive.google.com/u/0/uc?id=1JdXaehWO4UocjXqIXzWtUmVpRWWBtqmE&export=download',
+          'sha1sum': '9f4a635408f86974a8e9739769d3ed2a52c2b907',
+      }
   }
   # pylint: enable=line-too-long
   _GIT_URL = {}
@@ -110,13 +110,6 @@ class HoppitySingleAstDiffDataset(PlurDataset):
         tarfiles_to_extract, self.cooked_one_diff_extracted_dir,
         'cooked-one-diff.gz')
 
-    hopppity_gz_file = os.path.join(self.raw_data_dir, 'hoppity_cg.tar.gz')
-    if not os.path.exists(hopppity_gz_file):
-      raise NotImplementedError(
-          'Please download `hoppity_cg.tar.gz` manually and store it in '
-          '`self.raw_data_dir`. We were unable to find a public link for the '
-          'dataset. Try contacting the authors of the Hoppity paper directly.'
-      )
     tarfiles_to_extract = util.check_need_to_extract(
         tarfiles_to_extract, self.hoppity_cg_extracted_dir, 'hoppity_cg.tar.gz')
 
