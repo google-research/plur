@@ -48,10 +48,10 @@ Stage 1 is unique for each dataset, but stage 2 is the same for almost all datas
 ```python
 from plur.plur_data_generation import create_dataset
 
-dataset_name = 'code2seq_dataset'
-dataset_stage_1_directory = '/tmp/code2seq_dataset/stage_1'
+dataset_name = 'manysstubs4j_dataset'
+dataset_stage_1_directory = '/tmp/manysstubs4j_dataset/stage_1'
 stage_1_kwargs = dict()
-dataset_stage_2_directory = '/tmp/code2seq_dataset/stage_2'
+dataset_stage_2_directory = '/tmp/manysstubs4j_dataset/stage_2'
 stage_2_kwargs = dict()
 create_dataset(dataset_name, dataset_stage_1_directory, dataset_stage_2_directory, stage_1_kwargs, stage_2_kwargs)
 ```
@@ -59,7 +59,7 @@ create_dataset(dataset_name, dataset_stage_1_directory, dataset_stage_2_director
 `plur_data_generation.py` also provides a command line interface, but it offers less flexibility.
 
 ```bash
-python3 plur_data_generation.py --stage_1_dir=/tmp/code2seq_dataset/stage_1 --stage_2_dir=/tmp/code2seq_dataset/stage_2
+python3 plur_data_generation.py --stage_1_dir=/tmp/manysstubs4j_dataset/stage_1 --stage_2_dir=/tmp/manysstubs4j_dataset/stage_2
 ```
 
 #### Data loader (step 2)
@@ -70,7 +70,7 @@ After the data is generated, you can use `PlurDataLoader` to load the data. The 
 from plur.plur_data_loader import PlurDataLoader
 from plur.util import constants
 
-dataset_stage_2_directory = '/tmp/code2seq_dataset/stage_2'
+dataset_stage_2_directory = '/tmp/manysstubs4j_dataset/stage_2'
 split = constants.TRAIN_SPLIT_NAME
 batch_size = 32
 repeat_count = -1
@@ -83,18 +83,42 @@ for batch_data in train_data_generator:
 
 #### Training (step 3)
 
-This is the part where you use your own model to train on the PLUR data.
+This is where users of the PLUR framework plug in their custom ML models and
+code to train and generate predictions for PLUR tasks.
 
-The models and the training code from the PLUR paper are not yet part of the
-current release. We plan to release it in the near future.
+We provide the models for `GGNN`, `Transformer` and `GREAT` models from the PLUR
+paper. See below for sample commands. For the full set of command line FLAGS,
+see `plur/model_design/train.py`.
+
+
+*Training*
+
+```bash
+python3 train.py \
+ --data_dir=/tmp/manysstubs4j_dataset/stage_2 \
+ --exp_dir=/tmp/experiments/exp12345
+```
+
+*Evaluation / Generating predictions*
+
+```bash
+python3 train.py \
+ --data_dir=/tmp/manysstubs4j_dataset/stage_2 \
+ --exp_dir=/tmp/experiments/exp12345 \
+ --evaluate=true
+```
+
 
 #### Evaluating (step 4)
 
-Once the training is finished, you can generate the predictions on the test data and use `plur_evaluator.py` to evaluate the performance. `plur_evaluator.py` works in offline mode, meaning that it expects a file containing the ground truths, and a file containing the predictions.
+Once the training is finished and you have generated natural text predictions on the test data, you can use `plur_evaluator.py` to evaluate the performance. `plur_evaluator.py` works in offline mode, meaning that it expects a file containing the ground truths, and a file containing the predictions.
 
 ```bash
-python3 plur_evaluator.py --dataset_name=code2seq_dataset --target_file=/tmp/code2seq_dataset/targets.txt --prediction_file=/tmp/code2seq_dataset/predictions.txt
+python3 plur_evaluator.py --dataset_name=manysstubs4j_dataset --target_file=/tmp/manysstubs4j_dataset/targets.txt --prediction_file=/tmp/manysstubs4j_dataset/predictions.txt
 ```
+
+For more details about how `plur_evaluator` works see [`plur/eval/README.md`](./eval/README.md).
+
 
 ### Transforming and filtering data
 
@@ -109,10 +133,10 @@ E.g. of filters that can be run in stage 2 is that you want to check your model 
 ```python
 from plur.plur_data_generation import create_dataset
 
-dataset_name = 'code2seq_dataset'
-dataset_stage_1_directory = '/tmp/code2seq_dataset/stage_1'
+dataset_name = 'manysstubs4j_dataset'
+dataset_stage_1_directory = '/tmp/manysstubs4j_dataset/stage_1'
 stage_1_kwargs = dict()
-dataset_stage_2_directory = '/tmp/code2seq_dataset/stage_2'
+dataset_stage_2_directory = '/tmp/manysstubs4j_dataset/stage_2'
 def _filter_graph_size(graph_to_output_example, graph_size=1024):
   return len(graph_to_output_example.get_nodes()) <= graph_size
 stage_2_kwargs = dict(
@@ -129,10 +153,10 @@ create_dataset(dataset_name, dataset_stage_1_directory, dataset_stage_2_director
 ```python
 from plur.plur_data_generation import create_dataset
 
-dataset_name = 'code2seq_dataset'
-dataset_stage_1_directory = '/tmp/code2seq_dataset/stage_1'
+dataset_name = 'manysstubs4j_dataset'
+dataset_stage_1_directory = '/tmp/manysstubs4j_dataset/stage_1'
 stage_1_kwargs = dict()
-dataset_stage_2_directory = '/tmp/code2seq_dataset/stage_2'
+dataset_stage_2_directory = '/tmp/manysstubs4j_dataset/stage_2'
 stage_2_kwargs = dict()
 create_dataset(dataset_name, dataset_stage_1_directory, dataset_stage_2_directory, stage_1_kwargs, stage_2_kwargs)
 ```
@@ -140,14 +164,14 @@ create_dataset(dataset_name, dataset_stage_1_directory, dataset_stage_2_director
 is equivalent to
 
 ```python
-from plur.stage_1.code2seq_dataset import Code2seqDataset
+from plur.stage_1.manysstubs4j_dataset import ManySStubs4jJDataset
 from plur.stage_2.graph_to_output_example_to_tfexample import GraphToOutputExampleToTfexample
 
-dataset_name = 'code2seq_dataset'
-dataset_stage_1_directory = '/tmp/code2seq_dataset/stage_1'
-dataset_stage_2_directory = '/tmp/code2seq_dataset/stage_2'
-dataset = Code2seqDataset(dataset_stage_1_directory)
-dataest.stage_1_mkdirs()
+dataset_name = 'manysstubs4j_dataset'
+dataset_stage_1_directory = '/tmp/manysstubs4j_dataset/stage_1'
+dataset_stage_2_directory = '/tmp/manysstubs4j_dataset/stage_2'
+dataset = ManySStubs4jJDataset(dataset_stage_1_directory)
+dataset.stage_1_mkdirs()
 dataset.download_dataset()
 dataset.run_pipeline()
 
@@ -156,16 +180,15 @@ dataset.stage_2_mkdirs()
 dataset.run_pipeline()
 ```
 
-You can check out `plur.stage_1.code2seq_dataset` for arguments relevant for code2seq dataset. For example code2seq dataset provides `java-small`, `java-med` and `java-large` datasets. Therefore you can create a `java-large` dataset in this way.
-
+You can check out `plur.stage_1.manysstubs4j_dataset` for dataset specific arguments.
 ```python
-from plur.stage_1.code2seq_dataset import Code2seqDataset
+from plur.stage_1.manysstubs4j_dataset import ManySStubs4jJDataset
 
-dataset_name = 'code2seq_dataset'
-dataset_stage_1_directory = '/tmp/code2seq_dataset/stage_1'
+dataset_name = 'manysstubs4j_dataset'
+dataset_stage_1_directory = '/tmp/manysstubs4j_dataset/stage_1'
 
-dataset = Code2seqDataset(dataset_stage_1_directory, dataset_size='large')
-dataest.stage_1_mkdirs()
+dataset = ManySStubs4jJDataset(dataset_stage_1_directory, dataset_size='large')
+dataset.stage_1_mkdirs()
 dataset.download_dataset()
 dataset.run_pipeline()
 ```
@@ -184,28 +207,31 @@ Then add/change the following lines in `plur/plur_data_generation.py`:
 ```python
 from plur.stage_1.foo_dataset import FooDataset
 
-flags.DEFINE_enum('dataset_name', 'dummy_dataset',
-                  ['code2seq_dataset', 'dummy_dataset',
-                   'funcom_dataset', 'great_var_misuse_dataset',
-                   'hoppity_single_ast_diff_dataset',
-                   'manysstubs4j_dataset', 'foo_dataset'],
-                  'Name of the dataset to generate data.')
+flags.DEFINE_enum(
+    'dataset_name',
+    'dummy_dataset',
+    (
+        'code2seq_dataset',
+        'convattn_dataset',
+        'dummy_dataset',
+        # [...]
+        'retrieve_and_edit_dataset',
+        'foo_dataset',
+    ),
+    'Name of the dataset to generate data.')
 
-
+# [...]
 def get_dataset_class(dataset_name):
   """Get the dataset class based on dataset_name."""
   if dataset_name == 'code2seq_dataset':
     return Code2SeqDataset
+  elif dataset_name == 'convattn_dataset':
+    return ConvAttnDataset
   elif dataset_name == 'dummy_dataset':
     return DummyDataset
-  elif dataset_name == 'funcom_dataset':
-    return FuncomDataset
-  elif dataset_name == 'great_var_misuse_dataset':
-    return GreatVarMisuseDataset
-  elif dataset_name == 'hoppity_single_ast_diff_dataset':
-    return HoppitySingleAstDiffDataset
-  elif dataset_name == 'manysstubs4j_dataset':
-    return ManySStuBs4JDataset
+  # [...]
+  elif dataset_name == 'retrieve_and_edit_dataset':
+    return RetrieveAndEditDataset
   elif dataset_name == 'foo_dataset':
     return FooDataset
   else:
@@ -214,7 +240,7 @@ def get_dataset_class(dataset_name):
 
 ## Evaluation details
 
-The details of how evaluation is performed are in `plur/eval/README.md`.
+The details of how evaluation is performed are in [`plur/eval/README.md`](./eval/README.md).
 
 ## License
 

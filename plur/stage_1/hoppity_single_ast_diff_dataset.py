@@ -50,7 +50,7 @@ class HoppitySingleAstDiffDataset(PlurDataset):
   * 'NoOp': The output is 'NoOp'.
   """
 
-  # pylint: disable=line-too-long
+
   _URLS = {
       'cooked-one-diff.gz': {
           'url':
@@ -63,7 +63,7 @@ class HoppitySingleAstDiffDataset(PlurDataset):
           'sha1sum': '9f4a635408f86974a8e9739769d3ed2a52c2b907',
       }
   }
-  # pylint: enable=line-too-long
+
   _GIT_URL = {}
   _DATASET_NAME = 'Hoppity_Single_AST_diff_dataset'
   _DATASET_DESCRIPTION = """\
@@ -198,9 +198,9 @@ class HoppitySingleAstDiffDataset(PlurDataset):
       graph_to_output_example.add_pointer_output(int(edit_operation_tokens[2]))
       # If the edit operation is 6 tokens long, then there are two tokens
       # representing the node type. This information is taken from
-      # pylint: disable=line-too-long
+
       # https://github.com/AI-nstein/hoppity/blob/master/gtrans/common/dataset.py#L34
-      # pylint: enable=line-too-long
+
       if len(edit_operation_tokens) == 6:
         # The type token.
         graph_to_output_example.add_token_output(

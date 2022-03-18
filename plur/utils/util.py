@@ -23,11 +23,11 @@ import shutil
 # is not installed (it is also not needed in that case).
 os.environ['GIT_PYTHON_REFRESH'] = 'quiet'
 
-# pylint: disable=g-import-not-at-top
+
 import apache_beam as beam
 import git
 from plur.utils import constants
-# pylint: enable=g-import-not-at-top
+
 
 
 def escaped_str(s: str):

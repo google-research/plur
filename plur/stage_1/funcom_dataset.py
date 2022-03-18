@@ -44,14 +44,14 @@ class FuncomDataset(PlurDataset):
   tokens.
   """
 
-  # pylint: disable=line-too-long
+
   _URLS = {
       'funcom_tokenized.tar.gz': {
           'url': 'https://s3.us-east-2.amazonaws.com/leclair.tech/data/funcom/funcom_tokenized.tar.gz',
           'sha1sum': '5b25d3dfcf156ef48e1d6ab5c61029a67a6cf2a1',
       }
   }
-  # pylint: enable=line-too-long
+
   _GIT_URL = {}
   _DATASET_NAME = 'funcom_dataset'
   _DATASET_DESCRIPTION = """\

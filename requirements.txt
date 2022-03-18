@@ -1,16 +1,19 @@
 # List of dependencies to install
-absl-py
-apache-beam
-flax
-GitPython  # for "git" module
-google-cloud-storage
-immutabledict
-javalang
-jax
-numpy
-requests
-tensorflow
-tqdm
-tensor2tensor
-unidiff
-nltk
+absl-py>=0.12.0
+apache-beam>=2.34.0
+GitPython>=3.1.24  # for "git" module
+google-cloud-storage>=1.43.0
+immutabledict>=2.2.1
+javalang>=0.13.0
+jax>=0.2.26
+jaxlib>=0.1.76
+flax>=0.3.6
+trax>=1.4.1
+numpy>=1.19.5
+scipy>=1.6.1
+requests>=2.24.0
+tensorflow>=2.5.0
+tqdm>=4.62.3
+tensor2tensor>=1.15.7
+unidiff>=0.7.0
+nltk>=3.6.6

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Converts the CuBERT VMR NC dataset (w/o output token copies) to PLUR."""
-# TODO(maniatis): Add a test for this dataset.
+# TODO: Add a test for this dataset.
 
 from plur.stage_1 import cubert_variable_misuse_repair_dataset
 from plur.stage_1 import plur_dataset

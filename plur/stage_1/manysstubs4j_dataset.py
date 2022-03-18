@@ -47,7 +47,7 @@ class ManySStuBs4JDataset(PlurDataset):
   bug. Or 'NO_BUG' when there is no bug.
   """
 
-  # pylint: disable=line-too-long
+
   _URLS = {
       'sstubs.json': {
           'url': 'https://zenodo.org/record/3653444/files/sstubs?download=1',
@@ -60,7 +60,7 @@ class ManySStuBs4JDataset(PlurDataset):
           'sha1sum': 'c0bfd241a3fb60e84b39a8e2a1db2975f7c2be83',
       }
   }
-  # pylint: enable=line-too-long
+
   _GIT_URL = {}
   _DATASET_NAME = 'manysstubs4j_dataset'
   _DATASET_DESCRIPTION = """\

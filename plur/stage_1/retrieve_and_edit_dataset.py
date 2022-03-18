@@ -26,7 +26,7 @@ from plur.utils.graph_to_output_example import GraphToOutputExampleNotValidError
 import typing_extensions
 
 
-class DataDict(typing_extensions.TypedDict):  # pytype: disable=not-supported-yet
+class DataDict(typing_extensions.TypedDict):
   split: str
   function_name: str
   block_comment: str
@@ -53,7 +53,7 @@ class RetrieveAndEditDataset(PlurDataset):
   function tokens.
   """
 
-  # pylint: disable=line-too-long
+
   _URLS = {
       'train.tsv': {
           'url': 'https://worksheets.codalab.org/rest/bundles/0xfa69890526c04899a1eb286afb17d37a/contents/blob/github/train.tsv',
@@ -68,7 +68,7 @@ class RetrieveAndEditDataset(PlurDataset):
           'sha1sum': '1f44bae4a03bf7f1b3cf882943af404368939f46',
       }
   }
-  # pylint: enable=line-too-long
+
   _GIT_URL = {}
   _DATASET_NAME = 'retrieve_and_edit_dataset'
   _DATASET_DESCRIPTION = """\

@@ -72,9 +72,9 @@ class Code2seqEval(PlurEval):
     target_line_tokens = target_line.split(' ')
 
     # Similar to how code2seq computes TP, FP and FN.
-    # pylint: disable=line-too-long
+
     # https://github.com/tech-srl/code2seq/blob/b16a5ba0abe0d259dc8b1c4481d0867b341d3d7b/model.py#L268
-    # pylint: enable=line-too-long
+
     true_positives = 0
     false_positives = 0
     false_negatives = 0

@@ -60,7 +60,7 @@ from plur.utils import util
 import typing_extensions
 
 
-class DataDict(typing_extensions.TypedDict):  # pytype: disable=not-supported-yet
+class DataDict(typing_extensions.TypedDict):
   nodes: Sequence[Mapping[str, Union[int, str]]]
   edges: Sequence[Mapping[str, Union[int, str]]]
   output: Sequence[Mapping[str, Union[int, str]]]

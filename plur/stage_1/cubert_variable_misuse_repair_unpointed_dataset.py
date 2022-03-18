@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Converts the CuBERT VMR dataset (w/o input pointers in output) to PLUR."""
-# TODO(maniatis): Add a test for this dataset.
+# TODO: Add a test for this dataset.
 
 from plur.stage_1 import cubert_variable_misuse_repair_dataset
 from plur.stage_1 import plur_dataset

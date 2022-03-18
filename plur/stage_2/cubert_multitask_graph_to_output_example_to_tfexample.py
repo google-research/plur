@@ -163,8 +163,10 @@ def drop_all_examples(graph_to_output_example: GraphToOutputExample) -> bool:
 def keep_only_this_task(graph_to_output_example: GraphToOutputExample,
                         task_acronym: str) -> bool:
   node_data = graph_to_output_example.get_data()
+
   assert cubert_multitask_dataset.TASK_TYPE_FIELD_NAME in node_data, (
       f'Expected to find {cubert_multitask_dataset.TASK_TYPE_FIELD_NAME} in '
       f'the keys, but only found these: {node_data.keys()}')
   example_task = node_data[cubert_multitask_dataset.TASK_TYPE_FIELD_NAME]
+
   return example_task == task_acronym

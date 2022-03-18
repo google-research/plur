@@ -195,7 +195,7 @@ class CuBertVariableMisuseRepairEval(PlurEval):
                            'be set or both unset (or 0), but instead, they are '
                            f'({raw_total} and {raw_total_buggy}, respectively.')
     if raw_total:
-      # TODO(maniatis): Split _AllResults from _AllMetrics to avoid inconsistent
+      # TODO: Split _AllResults from _AllMetrics to avoid inconsistent
       # computation.
       return _AllResults(
           total=total,

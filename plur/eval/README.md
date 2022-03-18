@@ -30,13 +30,13 @@ hello world
 Then we evaluate the predictions:
 
 ```bash
-$ python3 plur_evaluator.py --dataset_name=convattn_dataset --prediction_file=/tmp/predictions.txt --target_file=/tmp/targets.txt
+$ python3 plur_evaluator.py --dataset_name=code2seq_dataset --prediction_file=/tmp/predictions.txt --target_file=/tmp/targets.txt
 Precision: 0.5, Recall: 0.4, F1-score: 0.4444444444444445
 ```
 
 ## File format
 
-plur_evaluator.py expects the targets and predictions to be stored on disk in a certain format. The target file should have 1 line for each ground truth target, and the prediction file should have 1 line for each prediction. The order of the lines in the prediction file should match the lines in the target file. For example:
+`plur_evaluator.py` expects the targets and predictions to be stored on disk in a certain format. The target file should have 1 line for each ground truth target, and the prediction file should have 1 line for each prediction. The order of the lines in the prediction file should match the lines in the target file. For example:
 
 ```
 targets.txt:

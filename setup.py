@@ -1,4 +1,4 @@
-# Copyright 2021 Google LLC.
+# Copyright 2022 Google LLC.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,26 +29,24 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 # Keep this list in sync with `requirements.txt`.
 install_requires = [
-    'absl-py',
-    'apache-beam',
-    'GitPython',
-    'google-cloud-storage',
-    'immutabledict',
-    'javalang',
-    'tensorflow',
-    'opencv-python',
-    'flax',
-    'jax',
-    'jaxlib',
-    'Pillow',
-    'tf_slim',
-    'numpy',
-    'scipy',
-    'requests',
-    'tqdm',
-    'tensor2tensor',
-    'unidiff',
-    'nltk'
+    'absl-py >= 0.12.0',
+    'apache-beam >= 2.34.0',
+    'GitPython >= 3.1.24',
+    'google-cloud-storage >= 1.43.0',
+    'immutabledict >= 2.2.1',
+    'javalang >=0.13.0',
+    'tensorflow >= 2.5.0',
+    'flax >= 0.3.6',
+    'jax >= 0.2.26',
+    'jaxlib >= 0.1.75',
+    'trax >= 1.4.1',
+    'numpy >=1.19.5',
+    'scipy >= 1.6.1 ',
+    'requests >= 2.24.0',
+    'tqdm >= 4.62.3',
+    'tensor2tensor >= 1.15.7',
+    'unidiff >= 0.7.0',
+    'nltk >= 3.6.6'
 ]
 
 plur_description = (

@@ -28,7 +28,7 @@ import tqdm
 
 
 class Code2SeqDataset(PlurDataset):
-  # pylint: disable=line-too-long
+
   """Converting data from code2seq dataset to a PLUR dataset.
 
   The dataset is used in: Alon, Uri, et al. 'code2seq: Generating sequences from
@@ -63,7 +63,7 @@ class Code2SeqDataset(PlurDataset):
           'sha1sum': 'ebc229ba1838a3c8f3a69ab507eb26fa5460152a',
       }
   }
-  # pylint: enable=line-too-long
+
   _GIT_URL = {}
   _DATASET_NAME = 'code2seq_dataset'
   _DATASET_DESCRIPTION = """\
@@ -165,7 +165,7 @@ class Code2SeqDataset(PlurDataset):
 
   def _construct_token_subtree(self, graph_to_output_example, token,
                                cur_node_id, token_root_name):
-    # pylint: disable=line-too-long
+
     """Construct the token subtree in a AST path.
 
     We create a node for each subtoken in the token, all subtokens are connected
@@ -244,7 +244,7 @@ class Code2SeqDataset(PlurDataset):
     return graph_to_output_example, cur_node_id, ast_node_ids
 
   def raw_data_to_graph_to_output_example(self, raw_data):
-    # pylint: disable=line-too-long
+
     """Convert raw data to the unified GraphToOutputExample data structure.
 
     The Code2Seq raw data contains the target function name, and the sampled
@@ -272,7 +272,7 @@ class Code2SeqDataset(PlurDataset):
       split(train/validation/test) the data belongs to, and the
       GraphToOutputExample instance.
     """
-    # pylint: enable=line-too-long
+
     split = raw_data['split']
     target_label = raw_data['target_label']
     ast_paths = raw_data['ast_paths']

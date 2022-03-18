@@ -14,6 +14,9 @@
 
 """Constants used in PLUR."""
 
+from tensor2tensor.data_generators import text_encoder
+
+
 ###############################################################################
 #
 #  Constants for directory and file naming
@@ -65,7 +68,7 @@ TFRECORD_DIRNAME = 'tfrecords'
 POINTER_TOKEN = 'POINTER'
 CLASS_TOKEN_PREFIX = 'CLASS_'
 DONE_TOKEN = 'DONE'
-PAD_TOKEN = '<pad>'
+PAD_TOKEN = text_encoder.PAD
 OOV_TOKEN = '<OOV>'
 RESERVED_TOKENS = [OOV_TOKEN, PAD_TOKEN]
 NUM_RESERVED_TOKENS = len(RESERVED_TOKENS)

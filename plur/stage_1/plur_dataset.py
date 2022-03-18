@@ -26,7 +26,7 @@ from typing import Dict, Mapping
 # is not installed (it is also not needed in that case).
 os.environ['GIT_PYTHON_REFRESH'] = 'quiet'
 
-# pylint: disable=g-import-not-at-top
+
 from absl import logging
 import apache_beam as beam
 import git
@@ -34,7 +34,7 @@ from plur.utils import constants
 from plur.utils import util
 import requests
 import tqdm
-# pylint: enable=g-import-not-at-top
+
 
 
 @dataclasses.dataclass
