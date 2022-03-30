@@ -111,11 +111,13 @@ python3 train.py \
 
 #### Evaluating (step 4)
 
-Once the training is finished and you have generated natural text predictions on the test data, you can use `plur_evaluator.py` to evaluate the performance. `plur_evaluator.py` works in offline mode, meaning that it expects a file containing the ground truths, and a file containing the predictions.
+Once the training is finished and you have generated natural text predictions on the test data, you can use `plur_evaluator.py` to evaluate the performance. `plur_evaluator.py` works in offline mode, meaning that it expects one or more files containing the ground truths, and matching files containing the predictions.
 
 ```bash
-python3 plur_evaluator.py --dataset_name=manysstubs4j_dataset --target_file=/tmp/manysstubs4j_dataset/targets.txt --prediction_file=/tmp/manysstubs4j_dataset/predictions.txt
+python3 plur_evaluator.py --dataset_name=manysstubs4j_dataset --target_file_pattern=/tmp/manysstubs4j_dataset/targets.txt --prediction_file_pattern=/tmp/manysstubs4j_dataset/predictions.txt
 ```
+
+When using multiple evaluation "rounds", the evaluator may create multiple targets and predictions files, formatted as `...predictions-0-of-5.txt`; you can refer to all of these combined using a Glob file pattern such as `...predictions-?-of-5.txt` in the command above.
 
 For more details about how `plur_evaluator` works see [`plur/eval/README.md`](./eval/README.md).
 
