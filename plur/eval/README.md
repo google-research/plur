@@ -30,7 +30,7 @@ hello world
 Then we evaluate the predictions:
 
 ```bash
-$ python3 plur_evaluator.py --dataset_name=code2seq_dataset --prediction_file=/tmp/predictions.txt --target_file=/tmp/targets.txt
+$ python3 plur_evaluator.py --dataset_name=code2seq_dataset --prediction_file_pattern=/tmp/predictions.txt --target_file_pattern=/tmp/targets.txt
 Precision: 0.5, Recall: 0.4, F1-score: 0.4444444444444445
 ```
 
